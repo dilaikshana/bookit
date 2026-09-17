@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookIt</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-title">
+            <span class="logo-mark">B</span>
+            <h1>BookIt</h1>
+          </div>
+          <p>Resource Booking</p>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-link active" data-section="dashboard">Dashboard</button>
+          <button class="nav-link" data-section="bookings" data-daily-bookings>Daily Bookings</button>
+          <button class="nav-link" data-section="create-booking">Create Booking</button>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section id="dashboard" class="panel active-section">
+          <div class="section-header overview-header">
+            <div>
+              <p class="eyebrow">Overview</p>
+              <h2>Dashboard</h2>
+            </div>
+          </div>
+
+          <div id="statsGrid" class="stats-grid"></div>
+
+          <div class="card dashboard-resources">
+            <div class="row-between">
+              <h3>Resources</h3>
+            </div>
+            <div id="dashboardResourceGrid" class="resource-grid"></div>
+          </div>
+
+          <div class="dashboard-booking-row">
+            <div class="quick-booking card">
+              <h3>Quick Booking</h3>
+              <form id="quickBookingForm" class="booking-form">
+                <div class="field-row">
+                  <label>
+                    Resource
+                    <select name="resourceId" id="quickResource"></select>
+                  </label>
+                  <label>
+                    Date
+                    <input type="date" name="date" id="quickDate" required />
+                  </label>
+                </div>
+
+                <div class="field-row two-col">
+                  <label>
+                    Start
+                    <input type="time" name="startTime" required />
+                  </label>
+                  <label>
+                    End
+                    <input type="time" name="endTime" required />
+                  </label>
+                </div>
+
+                <div class="field-row">
+                  <label>
+                    Name
+                    <input type="text" name="name" placeholder="Your name" required />
+                  </label>
+                  <label>
+                    Purpose
+                    <input type="text" name="purpose" placeholder="Purpose" required />
+                  </label>
+                </div>
+
+                <button type="submit" class="primary-btn">Book Now</button>
+                <p id="quickStatus" class="status-message" aria-live="polite"></p>
+              </form>
+            </div>
+
+            <div class="card today-bookings-card">
+              <div class="row-between">
+                <h3>Today's Bookings</h3>
+              </div>
+              <div id="todayBookings" class="table-wrap"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="bookings" class="panel schedule-panel hidden-section">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Schedule</p>
+              <h2>Bookings</h2>
+            </div>
+            <label class="inline-field">
+              <span>Date</span>
+              <input type="date" id="bookingDatePicker" />
+            </label>
+          </div>
+          <div id="bookingTable" class="table-wrap"></div>
+        </section>
+
+        <section id="create-booking" class="panel create-booking-panel hidden-section">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Create</p>
+              <h2>Create Booking</h2>
+            </div>
+          </div>
+
+          <form id="createBookingForm" class="booking-form">
+            <div class="field-row">
+              <label>
+                Resource
+                <select name="resourceId" id="createResource" required></select>
+              </label>
+            </div>
+
+            <div class="field-row three-col">
+              <label>
+                Date
+                <input type="date" name="date" required />
+              </label>
+              <label>
+                Start Time
+                <input type="time" name="startTime" required />
+              </label>
+              <label>
+                End Time
+                <input type="time" name="endTime" required />
+              </label>
+            </div>
+
+            <div class="field-row two-col">
+              <label>
+                Your Name
+                <input type="text" name="name" placeholder="John" required />
+              </label>
+              <label>
+                Purpose
+                <input type="text" name="purpose" placeholder="Team Meeting" required />
+              </label>
+            </div>
+
+            <button type="submit" class="primary-btn">Create Booking</button>
+            <p id="createStatus" class="status-message" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

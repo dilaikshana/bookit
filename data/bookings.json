@@ -1,0 +1,82 @@
+[
+  {
+    "id": "a1b2c3",
+    "resourceId": "room-1",
+    "date": "2026-09-20",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "John",
+    "purpose": "Team Meeting",
+    "status": "confirmed"
+  },
+  {
+    "id": "d4e5f6",
+    "resourceId": "projector",
+    "date": "2026-09-20",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "Sarah",
+    "purpose": "Client Presentation",
+    "status": "confirmed"
+  },
+  {
+    "id": "efa477e9-b867-4500-b096-9a1416cdf99f",
+    "resourceId": "room-2",
+    "date": "2099-01-01",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "Test User",
+    "purpose": "Overlap Test",
+    "status": "cancelled"
+  },
+  {
+    "id": "ebb24710-1cf5-466a-87b4-4e43b9c7507b",
+    "resourceId": "room-2",
+    "date": "2099-01-01",
+    "startTime": "10:00",
+    "endTime": "11:00",
+    "name": "Test User 3",
+    "purpose": "Adjacent Test",
+    "status": "cancelled"
+  },
+  {
+    "id": "afa119d5-1b3c-430a-adef-a726beb480cd",
+    "resourceId": "room-1",
+    "date": "2026-09-17",
+    "startTime": "10:40",
+    "endTime": "11:40",
+    "name": "shana",
+    "purpose": "Intern Meeting",
+    "status": "confirmed"
+  },
+  {
+    "id": "20343f47-5312-4e29-b217-11f2a9b42107",
+    "resourceId": "room-1",
+    "date": "2099-02-01",
+    "startTime": "09:00",
+    "endTime": "10:00",
+    "name": "Test One",
+    "purpose": "Conflict Test",
+    "status": "cancelled"
+  },
+  {
+    "id": "fc319b2f-8823-4883-a9d5-b632cd0b8cc7",
+    "resourceId": "room-1",
+    "date": "2026-09-17",
+    "startTime": "11:40",
+    "endTime": "12:40",
+    "name": "shana",
+    "purpose": "meething",
+    "status": "confirmed"
+  },
+  {
+    "id": "b74f64ac-78c7-4f8d-97d7-05cd5fd1508c",
+    "resourceId": "camera-kit",
+    "date": "2026-09-18",
+    "startTime": "12:00",
+    "endTime": "17:06",
+    "name": "Lino",
+    "purpose": "phoshooting",
+    "status": "confirmed"
+  }
+]
