@@ -1,94 +1,92 @@
 # BookIt
 
-BookIt is a simple resource booking dashboard for shared company resources such as meeting rooms, projectors, and laptop devices.
+BookIt is a simple resource booking application for shared company resources such as meeting rooms, projectors, and laptop devices.
 
 ## Features
 
-- 5 seeded resources
-- Dashboard summary cards
-- Quick booking form
-- Create booking form
-- Bookings list for selected date
-- Cancel booking action
-- Overlap prevention for confirmed bookings
-- Local JSON storage
+* View bookable resources
+* Create a booking
+* Prevent overlapping confirmed bookings
+* View all bookings for a selected day
+* Cancel a booking
+* Validate booking input with clear error messages
+* 5 seeded resources
 
 ## Tech Stack
 
-- Node.js 20+
-- Express.js
-- HTML
-- CSS
-- Vanilla JavaScript
-- JSON file storage
-
-## Folder Structure
-
-```text
-BookIt/
-|-- public/
-|   |-- index.html
-|   |-- style.css
-|   `-- app.js
-|-- data/
-|   `-- bookings.json
-|-- server.js
-|-- package.json
-`-- README.md
-```
+* Node.js 20+
+* Express.js
+* HTML
+* CSS
+* Vanilla JavaScript
+* JSON file storage
 
 ## Installation
 
 ```bash
-cd BookIt
 npm install
 ```
 
-## Run the app
+## Run
 
 ```bash
 npm start
 ```
 
-Open http://localhost:3000 in the browser.
-
-## API
-
-- GET /api/resources
-- GET /api/bookings
-- GET /api/bookings?date=YYYY-MM-DD
-- POST /api/bookings
-- PATCH /api/bookings/:id/cancel
-- GET /api/dashboard
-
-## Booking Rule
-
-Two confirmed bookings overlap when:
+Open:
 
 ```text
-existing.startTime < new.endTime && existing.endTime > new.startTime
+http://localhost:3000
 ```
 
-This means 09:00-10:00 and 10:00-11:00 do not overlap.
+## Booking Validation
 
-## Validation
+The application validates:
 
-The backend validates:
+* Resource is required
+* Date is required
+* Start time is required
+* End time is required
+* Person's name is required
+* Purpose is required
+* End time must be later than start time
+* Valid resource ID
+* Past booking dates are not allowed
 
-- resource
-- date
-- start time
-- end time
-- name
-- purpose
-- end time must be later than start time
-- valid resource ID
+## Booking Conflict Rule
+
+Two confirmed bookings for the same resource cannot overlap.
+
+Adjacent bookings such as:
+
+```text
+09:00 - 10:00
+10:00 - 11:00
+```
+
+are allowed.
+
+Cancelled bookings do not block new bookings.
 
 ## Storage
 
-Bookings are stored in `data/bookings.json`.
+Bookings are stored in:
+
+```text
+data/bookings.json
+```
+
+## Project Status
+
+All core requirements are implemented.
+
+No stretch feature was added because the core requirements were prioritized within the assessment time.
 
 ## Known Limitations
 
-- This is a local demo project, not a production multi-user system.
-- No login, auth, admin, or notifications are included.
+* Local/demo application only
+* No user accounts or authentication
+* No admin panel
+* No email notifications
+* No deployment
+
