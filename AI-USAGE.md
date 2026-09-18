@@ -45,3 +45,22 @@ The final implementation was reviewed and adjusted manually to match the require
 - Confirmed overlapping bookings return HTTP `409`.
 - Confirmed adjacent bookings are accepted.
 - Confirmed cancellation changes the booking status to `cancelled`.
+
+## Actual Prompts Used
+
+1. "Create a simple Express.js backend for a resource booking system with booking conflict validation."
+
+2. "Implement overlap validation so two confirmed bookings for the same resource cannot overlap."
+
+3. "Review the booking validation logic and identify edge cases such as cancelled bookings and adjacent time slots."
+
+## AI Output Rejected or Corrected
+
+AI initially suggested treating `09:00-10:00` and `10:00-11:00` as overlapping bookings.
+
+I rejected this because the assessment brief specifically gives this as an open decision and requires the developer to decide and document the behaviour. I decided that adjacent bookings are allowed, so the overlap condition was implemented using:
+
+existing.startTime < new.endTime &&
+existing.endTime > new.startTime
+
+This means `09:00-10:00` and `10:00-11:00` are accepted.
