@@ -54,8 +54,12 @@ async function fetchResources() {
 
   quickResourceSelect.value = resources[0]?.id || '';
   createResourceSelect.value = resources[0]?.id || '';
-  document.getElementById('quickDate').value = dateToday;
-  document.querySelector('#createBookingForm input[name="date"]').value = dateToday;
+  const quickDate = document.getElementById('quickDate');
+  const createDate = document.querySelector('#createBookingForm input[name="date"]');
+  quickDate.min = dateToday;
+  createDate.min = dateToday;
+  quickDate.value = dateToday;
+  createDate.value = dateToday;
 }
 
 async function fetchDashboard() {

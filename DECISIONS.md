@@ -1,62 +1,63 @@
-# Architecture Decisions
+1. Adjacent Bookings
 
-## 1. Simple Full-Stack Structure
+Decision:
+Adjacent bookings are allowed.
 
-BookIt uses one Express server and a static frontend:
+Example:
+A booking from 09:00–10:00 and another booking from 10:00–11:00 are not considered a conflict.
 
-- `server.js` contains the backend API and static file hosting.
-- `public/` contains HTML, CSS, and vanilla JavaScript.
-- `data/bookings.json` stores booking records.
+Why Chosen:
+The bookings do not overlap because the first booking ends exactly when the second booking starts.
 
-This keeps the project easy to run, explain, and review.
+2. Past Date Booking
 
-## 2. No Frontend Framework
+Decision:
+Past dates are not allowed for new bookings.
 
-The frontend uses plain HTML, CSS, and JavaScript. React, Vite, and other frontend frameworks are intentionally excluded because the project brief requires a simple public frontend.
+Options Considered:
 
-## 3. JSON File Storage
+Allow bookings for past dates
+Reject bookings for dates earlier than today
 
-Bookings are stored in `data/bookings.json` instead of a database. This is suitable for the local assessment/demo scope and avoids external services.
+Why Chosen:
+Past bookings are no longer useful for new scheduling. Rejecting past dates keeps the booking data meaningful.
 
-## 4. Server-Side Conflict Validation
+3. Cancelled Booking Availability
 
-The backend is the source of truth for booking availability. Frontend checks are not trusted to prevent double-booking.
+Decision:
+Cancelled bookings do not block the resource time slot.
 
-A booking conflicts when the same resource and date have overlapping confirmed times:
+Why Chosen:
+Once a booking is cancelled, the resource should become available for another booking during that time.
 
-```text
-existing.startTime < new.endTime && existing.endTime > new.startTime
-```
+4. Booking Time Validation
 
-This allows adjacent bookings such as `09:00-10:00` and `10:00-11:00`.
+Decision:
+The end time must be later than the start time.
 
-## 5. Cancelled Bookings
+Why Chosen:
+A booking must have a valid positive time duration. Same-time or reversed time ranges should not be accepted.
 
-Cancelling a booking changes its status to `cancelled`. Cancelled bookings are ignored by overlap detection, so their time slot can be booked again.
+5. Booking Date Requirement
 
-## 6. Dashboard Layout
+Decision:
+A booking date is mandatory.
 
-The dashboard is the main screen and includes:
+Why Chosen:
+Every booking must belong to a specific day so that bookings can be displayed and managed correctly.
 
-- Overview statistics
-- Five resource cards
-- Quick Booking form
-- Today's bookings
+6. Conflict Validation
 
-The sidebar provides navigation to the dashboard, daily bookings, and create booking views.
+Decision:
+Only bookings for the same resource and the same date are checked for time conflicts.
 
-## 7. Port Handling
+Why Chosen:
+Different resources can be booked at the same time without causing a conflict.
 
-The server starts on port `3000` by default. If that port is occupied, it tries the next available port automatically so the app can still launch locally.
+7. Booking Status
 
-## 8. Scope Boundaries
+Decision:
+New bookings are created with confirmed status.
 
-The project intentionally does not include:
-
-- Authentication
-- User accounts
-- Admin roles
-- Notifications
-- Payments
-- External integrations
-- Production database infrastructure
+Why Chosen:
+The application does not require an approval workflow, so a successfully created booking is immediately confirmed.

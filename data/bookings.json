@@ -77,6 +77,26 @@
     "endTime": "17:06",
     "name": "Lino",
     "purpose": "phoshooting",
+    "status": "cancelled"
+  },
+  {
+    "id": "e1494d1e-1120-4803-90a0-bf3cda00a45f",
+    "resourceId": "camera-kit",
+    "date": "2026-09-18",
+    "startTime": "10:30",
+    "endTime": "11:30",
+    "name": "shana",
+    "purpose": "party",
+    "status": "confirmed"
+  },
+  {
+    "id": "3121ed13-3f94-4764-b203-f2785e03d65d",
+    "resourceId": "camera-kit",
+    "date": "2026-09-18",
+    "startTime": "11:30",
+    "endTime": "12:30",
+    "name": "sathu",
+    "purpose": "opening day shooting",
     "status": "confirmed"
   }
 ]

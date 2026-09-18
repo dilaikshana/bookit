@@ -91,6 +91,9 @@ function validateBooking(payload) {
 
   if (!payload.resourceId) errors.push('Please select a resource.');
   if (!payload.date) errors.push('Please select a date.');
+  if (payload.date && payload.date < getTodayDate()) {
+    errors.push('Bookings cannot be made for a past date.');
+  }
   if (!payload.startTime) errors.push('Please enter a start time.');
   if (!payload.endTime) errors.push('Please enter an end time.');
   if (!payload.name || !String(payload.name).trim()) errors.push('Please enter your name.');
