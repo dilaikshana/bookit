@@ -137,7 +137,10 @@ function getDashboardStats() {
     totalResources: RESOURCES.length,
     todayBookings: todayBookings.length,
     availableResources,
-    confirmedBookings: confirmedBookings.length
+    confirmedBookings: confirmedBookings.length,
+    cancelledBookings: bookings.filter((booking) => {
+      return booking.date === today && booking.status === 'cancelled';
+    }).length
   };
 }
 

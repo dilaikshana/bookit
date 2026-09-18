@@ -68,15 +68,16 @@ async function fetchDashboard() {
     fetch(`/api/bookings?date=${dateToday}`)
   ]);
   const data = await dashboardResponse.json();
-  const todayBookings = await bookingsResponse.json();
-  const confirmedBookings = todayBookings.filter(
-    (booking) => String(booking.status).toLowerCase() === 'confirmed'
+  const bookings = await bookingsResponse.json();
+  const cancelledBookings = bookings.filter(
+    (booking) => String(booking.status).toLowerCase() === 'cancelled'
   ).length;
 
   const summary = [
     { label: 'Total Resources', value: data.totalResources },
     { label: "Today's Bookings", value: data.todayBookings },
-    { label: 'Confirmed Bookings', value: confirmedBookings }
+    { label: 'Confirmed Bookings', value: data.confirmedBookings },
+    { label: 'Cancelled Bookings', value: data.cancelledBookings ?? cancelledBookings }
   ];
 
   statsGrid.innerHTML = summary
